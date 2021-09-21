@@ -21,4 +21,4 @@ This web application lets you look up details about your favourite video games.
 
 |  |   |
 |--------------|-----------|
-| <img src="./screenshots/001m.png" alt="homepage" width="500"/>  | <img src="./screenshots/002m.png" alt="dialog" width="500"/> | 
+| <img src="./screenshots/001m.jpg" alt="homepage" width="500"/>  | <img src="./screenshots/002m.jpg" alt="dialog" width="500"/> | 
