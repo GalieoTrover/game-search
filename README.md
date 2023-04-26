@@ -9,3 +9,7 @@ This is a React based web application styled using [Material-UI](https://mui.com
 
 ## About
 This web application lets you look up details about your favourite video games.
+
+This repository contains 2 branches:
+- `main` : built version of the react app (running on https://games-search.netlify.app/)
+- `app` : source code for the app
