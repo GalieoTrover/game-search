@@ -1,5 +1,6 @@
 import { Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { SportsEsports } from '@material-ui/icons';
 
 const NavBar = ({ classes }) => {
 	return (
@@ -9,9 +10,10 @@ const NavBar = ({ classes }) => {
 				<Link
 					className={classes.titleMargin}
 					to="/"
-					style={{ fontWeight: 'bold', letterSpacing: 1 }}
+					style={{ fontWeight: 'bold', letterSpacing: 1, display: 'flex',
+					alignItems: 'center' }}
 				>
-					{/* <img src='/src/components/gamepad2.png' alt="icon" /> */}
+					<SportsEsports style={{ marginRight: '3px' }}/>
 					GameSearch
 				</Link>
 				<div style={{ display: 'flex' }}>
