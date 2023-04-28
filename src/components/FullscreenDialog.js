@@ -136,9 +136,9 @@ export default function ScrollDialog({ gameName, gameInfo, genre, screen, open, 
     }
   }, [open]);
 
-    const onInit = () => {
-        console.log('lightGallery has been initialized');
-    };
+    // const onInit = () => {
+    //     console.log('lightGallery has been initialized');
+    // };
 
   return (
     <div>
@@ -162,7 +162,7 @@ export default function ScrollDialog({ gameName, gameInfo, genre, screen, open, 
         </DialogTitle>
         <DialogContent dividers={scroll === 'paper'}>
 			<div className='title-desc' style={{ textAlign: 'center' }}>
-				<img src={gameInfo.background_image} style={{width: '87%', borderRadius: '8px'}}/>
+				<img src={gameInfo.background_image} alt="" style={{width: '87%', borderRadius: '8px'}}/>
         
         <div className={classes.gameDetails}>
           <div className={classes.infoCard}>
@@ -223,7 +223,7 @@ export default function ScrollDialog({ gameName, gameInfo, genre, screen, open, 
 
           { /* Description */ }
           
-            <Accordion style={{ backgroundColor: '#2d2d2d', margin: 'auto', marginTop: '20px', width: '90%' }}>
+            <Accordion style={{ backgroundColor: '#2d2d2d', margin: 'auto', marginTop: '20px', width: '89%' }}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.dialogTitle}>
                   Description
@@ -237,14 +237,14 @@ export default function ScrollDialog({ gameName, gameInfo, genre, screen, open, 
 
           { /* Screenshots */}
 
-          <Accordion style={{ backgroundColor: '#2d2d2d', margin: 'auto', marginTop: '20px', width: '90%' }}>
+          <Accordion style={{ backgroundColor: '#2d2d2d', margin: 'auto', marginTop: '20px', width: '89%' }}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.dialogTitle}>
                   Screenshots
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                  <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgFullscreen]}>
+                  <LightGallery speed={500} plugins={[lgThumbnail, lgFullscreen]}>
                   {screen.map((item) => (
                     <a href={item.image}>
                     <img alt="" src={item.image} />

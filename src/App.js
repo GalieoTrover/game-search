@@ -12,8 +12,10 @@ const useStyles = makeStyles(() => ({
 		fontFamily: 'Roboto'
 	},
 	logoCont: {
-		padding: '10px',
-		background: '#234'
+		padding: '12px',
+		background: '#234',
+		borderRadius: '8px',
+		marginTop: '15px'
 	},
 	titleMargin: {
 		color: '#f2aa4c !important',
@@ -22,7 +24,7 @@ const useStyles = makeStyles(() => ({
 	},
 	linkButton: {
 		marginRight: 10,
-		fontSize: '1.3em',
+		fontSize: '1.2em',
 		alignSelf: 'center',
 		textDecoration: 'none',
 		color: '#f2aa4c',
