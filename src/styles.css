@@ -1,121 +1,127 @@
 body {
-    font-family: 'Roboto';
-    background-color: #101820;
-    margin: 0px;
+  font-family: "Roboto";
+  background-color: #101820;
+  margin: 0px;
 }
 
 :root {
-    --accent: #f2aa4c;
+  --accent: #f2aa4c;
 }
 
 /* Containers */
 
 .MuiFormLabel-root.Mui-focused {
-    color: var(--accent) !important;
+  color: var(--accent) !important;
 }
 .MuiInput-underline:after {
-    border-color: var(--accent) !important;
+  border-color: var(--accent) !important;
 }
 /* reduce z-index for lightgallery to show up */
 .MuiDialog-root {
-    z-index: 0 !important;
+  z-index: 0 !important;
 }
 
 /* Landing page */
 
 .MuiImageListItem-item {
-    border-radius: 8px;
+  border-radius: 8px;
 }
 .MuiImageListItem-imgFullWidth {
-    top: 0 !important;
-    width: 100%;
-    position: unset !important;
-    transform: translateY(-0%) !important;
+  top: 0 !important;
+  width: 100%;
+  position: unset !important;
+  transform: translateY(-0%) !important;
 }
 .makeStyles-gameList-10 {
-    gap: 5px;
+  gap: 5px;
 }
 li.MuiImageListItem-root {
-    width: calc(93%/5) !important;
+  width: calc(93% / 5) !important;
 }
 li.MuiImageListItem-root:hover {
-    border-radius: 8px;
+  border-radius: 8px;
 }
 
 /* Modal window */
 
 .MuiPaper-root {
-    background: #101820 !important;
+  background: #101820 !important;
 }
 .MuiAccordionSummary-root {
-    background: #234 !important;
+  background: #234 !important;
 }
 .lg-react-element {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
 }
 .lg-react-element a {
-    width: calc(90%/2);
+  width: calc(90% / 2);
 }
 .lg-react-element a img {
-    width: 100%;
+  width: 100%;
 }
 .lg-react-element a img:hover {
-    border-radius: 8px;
-    transform: scale(1.0);
-    border: 2px solid var(--accent);
+  border-radius: 8px;
+  transform: scale(1);
+  border: 2px solid var(--accent);
 }
-.lg-outer .lg-thumb-item.active, .lg-outer .lg-thumb-item:hover {
-    border-color: var(--accent) !important;
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item:hover {
+  border-color: var(--accent) !important;
 }
 .MuiSvgIcon-root {
-    color: var(--accent) !important;
+  color: var(--accent) !important;
 }
 .MuiAccordion-root:before {
-    background-color: inherit !important;
+  background-color: inherit !important;
 }
 .MuiAccordionSummary-root {
-    border-radius: 8px !important;
+  border-radius: 8px !important;
+}
+#scroll-dialog-description {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 /* media queries */
 
 @media screen and (max-width: 600px) {
-    /* Modal window styles */
-    .title-desc img {
-        width: 100% !important;
-    }
-    .makeStyles-gameDetails-21  {
-        gap: 5px;
-        flex-flow: row wrap;
-    }
-    .makeStyles-infoCard-22 {
-        width: calc(80%/2) !important;
-        flex-flow: row wrap;
-    }
-    .makeStyles-relatedGames-26 {
-        justify-content: space-between;
-    }
-    .makeStyles-relatedGamesGame-27 {
-        width: calc(95%/2) !important;
-    }
-    .makeStyles-relatedGamesImg-28 {
-        width: 100% !important;
-    }
+  /* Modal window styles */
+  .title-desc img {
+    width: 100% !important;
+  }
+  .makeStyles-gameDetails-21 {
+    gap: 5px;
+    flex-flow: row wrap;
+  }
+  .makeStyles-infoCard-22 {
+    width: calc(80% / 2) !important;
+    flex-flow: row wrap;
+  }
+  .makeStyles-relatedGames-26 {
+    justify-content: space-between;
+  }
+  .makeStyles-relatedGamesGame-27 {
+    width: calc(95% / 2) !important;
+  }
+  .makeStyles-relatedGamesImg-28 {
+    width: 100% !important;
+  }
 
-    /* Landing page */
-    li.MuiImageListItem-root {
-        width: calc(93%/3) !important;
-    }
-    .MuiImageListItem-imgFullHeight {
-        height: 62% !important;
-    }
-    .MuiImageListItemBar-titleWrap {
-        margin: 0px !important;
-        padding: 5px;
-    }
-    .MuiImageListItemBar-title span {
-        font-size: 15px !important;
-    }
+  /* Landing page */
+  li.MuiImageListItem-root {
+    width: calc(93% / 3) !important;
+  }
+  .MuiImageListItem-imgFullHeight {
+    height: 62% !important;
+  }
+  .MuiImageListItemBar-titleWrap {
+    margin: 0px !important;
+    padding: 5px;
+  }
+  .MuiImageListItemBar-title span {
+    font-size: 15px !important;
+  }
 }

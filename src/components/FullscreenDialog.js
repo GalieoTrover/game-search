@@ -269,9 +269,7 @@ export default function ScrollDialog({
             <Accordion
               style={{
                 backgroundColor: "#2d2d2d",
-                margin: "auto",
-                marginTop: "20px",
-                width: "89%",
+                width: "90%",
               }}
             >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -292,7 +290,7 @@ export default function ScrollDialog({
               backgroundColor: "#2d2d2d",
               margin: "auto",
               marginTop: "20px",
-              width: "89%",
+              width: "90%",
             }}
           >
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
