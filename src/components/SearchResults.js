@@ -4,6 +4,7 @@ import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import { makeStyles } from "@material-ui/core";
 import { useState } from "react";
 import FullScreenDialog from "./FullscreenDialog";
+import { Shuffle } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -11,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "space-around",
     overflow: "hidden",
+    marginBottom: "60px",
   },
   dialog: {
     display: "flex",
@@ -52,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ gameData, term }) => {
+const Item = ({ gameData, term, random }) => {
   const classes = useStyles();
 
   const name = gameData.map((item) => item.name);
@@ -63,6 +65,7 @@ const Item = ({ gameData, term }) => {
   const [genre, setGenre] = useState([]);
   const [screen, setScreen] = useState(null);
   const [open, setOpen] = useState(false);
+  const [gameLinks, setGameLinks] = useState([]);
 
   const handleClose = () => {
     setOpen(false);
@@ -92,7 +95,9 @@ const Item = ({ gameData, term }) => {
     for (let i = 0; i < gameData[index].genres.length; i++) {
       eachGenres.push(gameData[index].genres[i].name);
     }
+    setGenre(eachGenres);
 
+    // getting related games
     let gameSlug = gameData[index].slug;
 
     fetch(
@@ -105,7 +110,11 @@ const Item = ({ gameData, term }) => {
         setRelated(relGames);
       });
 
-    setGenre(eachGenres);
+    fetch(
+      `https://api.rawg.io/api/games/${gameSlug}/stores?key=208b3bfe90d940ba9127c24125bae44b`
+    )
+      .then((res) => res.json())
+      .then((data) => setGameLinks(data));
 
     fetch(
       `https://api.rawg.io/api/games/${gameData[index].id}?key=208b3bfe90d940ba9127c24125bae44b`
@@ -116,9 +125,21 @@ const Item = ({ gameData, term }) => {
 
   return (
     <div className={classes.card}>
-      {term ? null : (
-        <h2 style={{ color: "white", marginTop: 5 }}>Popular Games</h2>
-      )}
+      <header className="results-header">
+        {term ? null : (
+          <div id="popular-games">
+            <h2 style={{ color: "white" }}>Popular Games</h2>
+          </div>
+        )}
+        <div
+          className="random-game"
+          onClick={random}
+          style={{ cursor: "pointer" }}
+        >
+          <Shuffle />
+          <span style={{ color: "white" }}>Random game</span>
+        </div>
+      </header>
       <ImageList className={classes.gameList} cols={3.2}>
         {gameData.map((item) => (
           <ImageListItem key={item.slug} className={classes.image}>
@@ -160,6 +181,7 @@ const Item = ({ gameData, term }) => {
           handleClose={handleClose}
           open={open}
           related={related}
+          gameLinks={gameLinks}
         />
       )}
     </div>

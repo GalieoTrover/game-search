@@ -7,7 +7,8 @@ const NavBar = ({ classes }) => {
     <div>
       <Container
         style={{ display: "flex", justifyContent: "space-between" }}
-        className={classes.logoCont}
+        // className={classes.logoCont}
+        className="logoCont"
       >
         <Link
           className={classes.titleMargin}
@@ -22,7 +23,7 @@ const NavBar = ({ classes }) => {
           <SportsEsports style={{ marginRight: "3px" }} />
           GameSearch
         </Link>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", gap: "10px" }}>
           <Link className={classes.linkButton} to="/about">
             About
           </Link>

@@ -11,21 +11,14 @@ const useStyles = makeStyles(() => ({
   root: {
     fontFamily: "Roboto",
   },
-  logoCont: {
-    padding: "12px",
-    background: "#234",
-    borderRadius: "8px",
-    marginTop: "15px",
-    width: "93%",
-  },
   titleMargin: {
     color: "#f2aa4c !important",
     textDecoration: "none",
     fontSize: "1.5em",
   },
   linkButton: {
-    marginRight: 10,
-    fontSize: "1.1em",
+    // marginRight: 10,
+    fontSize: "1em",
     alignSelf: "center",
     textDecoration: "none",
     color: "#f2aa4c",
@@ -55,6 +48,7 @@ function App() {
     <Router>
       <div>
         <NavBar classes={classes} />
+
         <Switch>
           <Route exact path="/">
             <Search classes={classes} />
