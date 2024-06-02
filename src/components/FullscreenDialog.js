@@ -189,16 +189,20 @@ export default function FullScreenDialog({
               <div className={classes.infoCard}>
                 <Code />
                 <span style={{ color: "#f2aa4c" }}>Developer</span>
-                <p style={{ fontSize: "14px" }}>
-                  {gameInfo.developers[0].name}
-                </p>
+                {gameInfo.developers[0] ? (
+                  <p>{gameInfo.developers[0].name}</p>
+                ) : (
+                  <p>No developers found</p>
+                )}
               </div>
               <div className={classes.infoCard}>
                 <SupervisedUserCircle />
                 <span style={{ color: "#f2aa4c" }}>Publisher</span>
-                <p style={{ fontSize: "14px" }}>
-                  {gameInfo.publishers[0].name}
-                </p>
+                {gameInfo.publishers[0] ? (
+                  <p>{gameInfo.publishers[0].name}</p>
+                ) : (
+                  <p>No publishers found</p>
+                )}
               </div>
               <div className={classes.infoCard}>
                 <CalendarToday />

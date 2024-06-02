@@ -54,11 +54,9 @@ swiper-container {
   position: relative;
 }
 .swiper-slide {
-  height: 570px !important;
+  height: 750px !important;
 }
-/* .swiper-slide:hover {
-  cursor: pointer;
-} */
+
 .carousel-img {
   width: 100%;
   height: 100%;
@@ -67,9 +65,7 @@ swiper-container {
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* .carousel-img:hover {
-  opacity: 1;
-} */
+
 .overlay {
   position: absolute;
   bottom: 40%;
@@ -171,8 +167,7 @@ swiper-container {
 }
 li.MuiImageListItem-root {
   width: calc(93% / 5) !important;
-}
-li.MuiImageListItem-root:hover {
+  border: 5px solid transparent;
   border-radius: 8px;
 }
 
@@ -201,6 +196,7 @@ li.MuiImageListItem-root:hover {
 .lg-react-element a img {
   width: 100%;
   border-radius: 8px;
+  border: 2px solid transparent;
 }
 .lg-react-element a img:hover {
   border-radius: 8px;
