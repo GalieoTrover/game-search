@@ -154,13 +154,6 @@ const Item = ({ gameData, term, random }) => {
                   {item.name}
                 </span>
               }
-              subtitle={
-                <div>
-                  <span style={{ marginRight: "2em" }}>
-                    Metacritic: <span>{item.metacritic}</span>
-                  </span>
-                </div>
-              }
               classes={{
                 root: classes.titleBar,
                 title: classes.title,
