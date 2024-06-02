@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e38c6482.css",
-    "main.js": "/static/js/main.c4e069bb.js",
+    "main.css": "/static/css/main.fe20a9be.css",
+    "main.js": "/static/js/main.9b982932.js",
     "static/media/roboto-all-400-normal.woff": "/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
     "static/media/roboto-latin-400-normal.woff2": "/static/media/roboto-latin-400-normal.b009a76ad6afe4ebd301.woff2",
     "static/media/roboto-cyrillic-ext-400-normal.woff2": "/static/media/roboto-cyrillic-ext-400-normal.804378952da8a10faae2.woff2",
@@ -19,11 +19,11 @@
     "static/media/nintendoIcon.svg": "/static/media/nintendoIcon.2ab76cb0db743556182d86acd067434d.svg",
     "static/media/xboxIcon.svg": "/static/media/xboxIcon.796811c636dde564c76775de0330d105.svg",
     "index.html": "/index.html",
-    "main.e38c6482.css.map": "/static/css/main.e38c6482.css.map",
-    "main.c4e069bb.js.map": "/static/js/main.c4e069bb.js.map"
+    "main.fe20a9be.css.map": "/static/css/main.fe20a9be.css.map",
+    "main.9b982932.js.map": "/static/js/main.9b982932.js.map"
   },
   "entrypoints": [
-    "static/css/main.e38c6482.css",
-    "static/js/main.c4e069bb.js"
+    "static/css/main.fe20a9be.css",
+    "static/js/main.9b982932.js"
   ]
 }
