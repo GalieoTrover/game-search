@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/game-search/static/css/main.ccdfbc22.css",
-    "main.js": "/game-search/static/js/main.f6f3c6c7.js",
+    "main.js": "/game-search/static/js/main.5d1545e8.js",
     "static/media/roboto-all-400-normal.woff": "/game-search/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
     "static/media/roboto-latin-400-normal.woff2": "/game-search/static/media/roboto-latin-400-normal.b009a76ad6afe4ebd301.woff2",
     "static/media/roboto-cyrillic-ext-400-normal.woff2": "/game-search/static/media/roboto-cyrillic-ext-400-normal.804378952da8a10faae2.woff2",
@@ -20,10 +20,10 @@
     "static/media/xboxIcon.svg": "/game-search/static/media/xboxIcon.796811c636dde564c76775de0330d105.svg",
     "index.html": "/game-search/index.html",
     "main.ccdfbc22.css.map": "/game-search/static/css/main.ccdfbc22.css.map",
-    "main.f6f3c6c7.js.map": "/game-search/static/js/main.f6f3c6c7.js.map"
+    "main.5d1545e8.js.map": "/game-search/static/js/main.5d1545e8.js.map"
   },
   "entrypoints": [
     "static/css/main.ccdfbc22.css",
-    "static/js/main.f6f3c6c7.js"
+    "static/js/main.5d1545e8.js"
   ]
 }
