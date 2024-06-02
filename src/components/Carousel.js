@@ -5,29 +5,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-function Carousel({ gameData, latestGames }) {
+function Carousel({ latestGames }) {
   let swiperData = latestGames.results.slice(1, 6);
-  // console.log(swiperData);
   swiperData.map(function (game, id) {
     if (id === game.id) console.log(game);
     return null;
   });
-  //   let swiperData = gameData.slice(0, 5);
-  //   console.log(latestGames.results.slice(0, 5));
-  //   console.log(swiperData);
-  //   let genresArr = [];
-  //   let eachGenre = [];
-  //   swiperData.map((game) => console.log(game.genres[2].name));
-  //   //   genresArr.map((genre) => console.log(genre[0].name));
-  //   for (let i = 0; i < genresArr.length; i++) {
-  //     for (let j = 0; j < genresArr[i].length; j++) {
-  //       eachGenre.push(genresArr[i][j].name);
-  //     }
-  //   }
-  //   console.log(eachGenre.slice(0, 3));
-  //   console.log(genresArr);
-  //   swiperData.map((game) => (genresArr = game.genres.slice(0, 3)));
-  //   genresArr.map((genre) => console.log(genre.name));
   return (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
@@ -36,8 +19,8 @@ function Carousel({ gameData, latestGames }) {
       autoplay={{ delay: 4000 }}
       pagination={{ clickable: true }}
     >
-      {swiperData.map((game) => (
-        <SwiperSlide>
+      {swiperData.map((game, index) => (
+        <SwiperSlide key={index}>
           <div
             className="carousel-img"
             style={{ backgroundImage: `url(${game.background_image})` }}
@@ -47,15 +30,18 @@ function Carousel({ gameData, latestGames }) {
               <div className="overlay-content-head">
                 <h3 className="overlay-content--title">{game.name}</h3>
                 {game.metacritic && (
-                  <span className="overlay-content--metacritic">
-                    {game.metacritic}
-                  </span>
+                  <p>
+                    Metacritic
+                    <span className="overlay-content--metacritic">
+                      {game.metacritic}
+                    </span>
+                  </p>
                 )}
               </div>
               <div className="overlay-content--details">
                 <div className="details details-release">
                   <span className="details-info">Release Date:</span>
-                  <span>{game.released}</span>
+                  <span>{game.released.split("-").reverse().join("/")}</span>
                 </div>
                 <div className="details details-genres">
                   <span className="details-info">Geners:</span>

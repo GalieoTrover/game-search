@@ -2,20 +2,24 @@ import { useState, useEffect } from "react";
 import Carousel from "./Carousel";
 import SearchResults from "./SearchResults";
 /* Material-UI imports */
-import { TextField, Container } from "@material-ui/core";
+import { TextField, Container, Button } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 
 const Search = ({ classes }) => {
   const [gameData, setGameData] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [latest, setLatest] = useState(null);
+  const [appState, setAppState] = useState("gameData");
+
+  let currentYear = new Date().getFullYear();
 
   useEffect(() => {
     fetch(
-      `https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&search_exact=true&search=${searchTerm}&page_size=15&exclude_additions=true&dates=2021-01-01,2022-12-31`
+      `https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&dates=${currentYear}-01-01,${currentYear}-12-31&page_size=30`
     )
       .then((res) => {
         if (!res.ok) {
@@ -40,21 +44,22 @@ const Search = ({ classes }) => {
         setError(null);
       })
       .catch((error) => setError(error.message));
-  }, [searchTerm]);
+  }, []);
 
-  const randomize = function () {
-    const randomId = Math.floor(Math.random() * 100);
+  const getSearchResults = async () => {
+    const fetchSearchResults = await fetch(
+      `https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&search_exact=true&search=${searchTerm}&page_size=15&exclude_additions=true`
+    );
+    const jsonSearchResults = await fetchSearchResults.json();
+    const dataSearchResults = await jsonSearchResults;
 
-    fetch(
-      `https://api.rawg.io/api/games/${randomId}?key=208b3bfe90d940ba9127c24125bae44b`
-    )
-      .then((res) => res.json())
-      .then((data) => setSearchTerm(data.name));
+    setSearchResults(dataSearchResults.results);
+    setAppState("searchResults");
   };
 
   useEffect(() => {
     fetch(
-      "https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&dates=2023-01-01,2023-12-31&page_size=30"
+      `https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&dates=${currentYear}-01-01,${currentYear}-12-31&page_size=30`
     )
       .then((res) => res.json())
       .then((data) => setLatest(data));
@@ -66,18 +71,37 @@ const Search = ({ classes }) => {
     },
   });
 
+  let results;
+  switch (appState) {
+    case "gameData":
+      results = gameData;
+      break;
+    case "searchResults":
+      results = searchResults;
+      break;
+    default:
+      results = gameData;
+  }
+
   return (
     <div className={classes.root}>
       <ThemeProvider theme={darkTheme}>
         <div>
           {latest && <Carousel gameData={gameData} latestGames={latest} />}
-          <Container style={{ padding: "0 14px" }}>
+          <Container className="search-field">
             <TextField
               label="Search for a game title"
               placeholder="eg: Call of duty, Fifa, Far cry"
               className={classes.searchMargin}
               onChange={(e) => setSearchTerm(e.target.value)}
             ></TextField>
+            <Button
+              variant="contained"
+              className="search-btn"
+              onClick={getSearchResults}
+            >
+              Search
+            </Button>
             {error && (
               <p style={{ textAlign: "center", fontSize: 30, color: "white" }}>
                 {error}
@@ -93,11 +117,7 @@ const Search = ({ classes }) => {
           ) : (
             <>
               {gameData && (
-                <SearchResults
-                  gameData={gameData}
-                  term={searchTerm}
-                  random={randomize}
-                />
+                <SearchResults gameData={results} term={searchTerm} />
               )}
             </>
           )}

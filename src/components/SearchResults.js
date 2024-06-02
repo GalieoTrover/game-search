@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ gameData, term, random }) => {
+const Item = ({ gameData, term }) => {
   const classes = useStyles();
 
   const name = gameData.map((item) => item.name);
@@ -131,14 +131,6 @@ const Item = ({ gameData, term, random }) => {
             <h2 style={{ color: "white" }}>Popular Games</h2>
           </div>
         )}
-        <div
-          className="random-game"
-          onClick={random}
-          style={{ cursor: "pointer" }}
-        >
-          <Shuffle />
-          <span style={{ color: "white" }}>Random game</span>
-        </div>
       </header>
       <ImageList className={classes.gameList} cols={3.2}>
         {gameData.map((item) => (

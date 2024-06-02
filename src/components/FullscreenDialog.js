@@ -131,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ScrollDialog({
+export default function FullScreenDialog({
   gameName,
   gameInfo,
   genre,
@@ -203,12 +203,18 @@ export default function ScrollDialog({
               <div className={classes.infoCard}>
                 <CalendarToday />
                 <span style={{ color: "#f2aa4c" }}>Release Date</span>
-                <p style={{ fontSize: "14px" }}>{gameInfo.released}</p>
+                {gameInfo.released ? (
+                  <p style={{ fontSize: "14px" }}>
+                    {gameInfo.released.split("-").reverse().join("/")}
+                  </p>
+                ) : (
+                  <p>Not released yet</p>
+                )}
               </div>
               <div className={classes.infoCard}>
                 <Public />
                 <span style={{ color: "#f2aa4c" }}>Metacritic</span>
-                <p style={{ fontSize: "14px" }}>
+                <div>
                   {gameInfo.metacritic && gameInfo.metacritic_url ? (
                     <a
                       href={gameInfo.metacritic_url}
@@ -220,9 +226,9 @@ export default function ScrollDialog({
                       {gameInfo.metacritic}
                     </a>
                   ) : (
-                    "Not found"
+                    <p style={{ fontSize: "14px" }}>Not found</p>
                   )}
-                </p>
+                </div>
               </div>
               <div className={classes.infoCard}>
                 <Mood />
@@ -251,65 +257,70 @@ export default function ScrollDialog({
                 <LocalGroceryStore />
                 <span style={{ color: "#f2aa4c" }}>Stores</span>
                 <div id="stores">
-                  {gameLinks.results.map(function (link) {
-                    if (link.store_id === 1)
-                      return (
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          alt="Steam"
-                        >
-                          <img
-                            src={steamIcon}
-                            alt="steamIcon"
-                            className="storesvg"
-                          />
-                        </a>
-                      );
-                    if (link.store_id === 3)
-                      return (
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          alt="Playstation"
-                        >
-                          <img src={psIcon} alt="psIcon" className="storesvg" />
-                        </a>
-                      );
-                    if (link.store_id === 2)
-                      return (
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          alt="Xbox"
-                        >
-                          <img
-                            src={xboxIcon}
-                            alt="xboxIcon"
-                            className="storesvg"
-                          />
-                        </a>
-                      );
-                    if (link.store_id === 6)
-                      return (
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          alt="Nintendo"
-                        >
-                          <img
-                            src={nintendoIcon}
-                            alt="nintendoIcon"
-                            className="storesvg"
-                          />
-                        </a>
-                      );
-                    return null;
-                  })}
+                  {gameLinks.results &&
+                    gameLinks.results.map(function (link) {
+                      if (link.store_id === 1)
+                        return (
+                          <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            alt="Steam"
+                          >
+                            <img
+                              src={steamIcon}
+                              alt="steamIcon"
+                              className="storesvg"
+                            />
+                          </a>
+                        );
+                      if (link.store_id === 3)
+                        return (
+                          <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            alt="Playstation"
+                          >
+                            <img
+                              src={psIcon}
+                              alt="psIcon"
+                              className="storesvg"
+                            />
+                          </a>
+                        );
+                      if (link.store_id === 2)
+                        return (
+                          <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            alt="Xbox"
+                          >
+                            <img
+                              src={xboxIcon}
+                              alt="xboxIcon"
+                              className="storesvg"
+                            />
+                          </a>
+                        );
+                      if (link.store_id === 6)
+                        return (
+                          <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            alt="Nintendo"
+                          >
+                            <img
+                              src={nintendoIcon}
+                              alt="nintendoIcon"
+                              className="storesvg"
+                            />
+                          </a>
+                        );
+                      return null;
+                    })}
                 </div>
               </div>
             </div>
