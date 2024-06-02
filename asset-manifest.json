@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/game-search/static/css/main.ccdfbc22.css",
+    "main.js": "/game-search/static/js/main.f6f3c6c7.js",
+    "static/media/roboto-all-400-normal.woff": "/game-search/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
+    "static/media/roboto-latin-400-normal.woff2": "/game-search/static/media/roboto-latin-400-normal.b009a76ad6afe4ebd301.woff2",
+    "static/media/roboto-cyrillic-ext-400-normal.woff2": "/game-search/static/media/roboto-cyrillic-ext-400-normal.804378952da8a10faae2.woff2",
+    "static/media/lg.svg?io9a6k": "/game-search/static/media/lg.09cd8e9be7081f216644.svg",
+    "static/media/roboto-latin-ext-400-normal.woff2": "/game-search/static/media/roboto-latin-ext-400-normal.861b791f9de857a6e7bc.woff2",
+    "static/media/roboto-cyrillic-400-normal.woff2": "/game-search/static/media/roboto-cyrillic-400-normal.71a33b6b50457b2c903a.woff2",
+    "static/media/roboto-greek-400-normal.woff2": "/game-search/static/media/roboto-greek-400-normal.c35e4c3958e209d17b31.woff2",
+    "static/media/roboto-vietnamese-400-normal.woff2": "/game-search/static/media/roboto-vietnamese-400-normal.3230f9b040f3c630e0c3.woff2",
+    "static/media/lg.woff?io9a6k": "/game-search/static/media/lg.356a0e9cb064c7a196c6.woff",
+    "static/media/lg.ttf?io9a6k": "/game-search/static/media/lg.747d038541bfc6bb8ea9.ttf",
+    "static/media/psIcon.svg": "/game-search/static/media/psIcon.dfc46f309a69b4c0b7389d75cfda53a2.svg",
+    "static/media/lg.woff2?io9a6k": "/game-search/static/media/lg.64b800aa30714fd916dc.woff2",
+    "static/media/steamIcon.svg": "/game-search/static/media/steamIcon.d8e480a7ca55372f5ad77a604df749a1.svg",
+    "static/media/roboto-greek-ext-400-normal.woff2": "/game-search/static/media/roboto-greek-ext-400-normal.169619821ea93019d1bb.woff2",
+    "static/media/nintendoIcon.svg": "/game-search/static/media/nintendoIcon.2ab76cb0db743556182d86acd067434d.svg",
+    "static/media/xboxIcon.svg": "/game-search/static/media/xboxIcon.796811c636dde564c76775de0330d105.svg",
+    "index.html": "/game-search/index.html",
+    "main.ccdfbc22.css.map": "/game-search/static/css/main.ccdfbc22.css.map",
+    "main.f6f3c6c7.js.map": "/game-search/static/js/main.f6f3c6c7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ccdfbc22.css",
+    "static/js/main.f6f3c6c7.js"
+  ]
+}
