@@ -46,7 +46,7 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <>
         <NavBar classes={classes} />
 
         <Switch>
@@ -57,7 +57,7 @@ function App() {
             <About />
           </Route>
         </Switch>
-      </div>
+      </>
     </Router>
   );
 }

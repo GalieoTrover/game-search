@@ -4,7 +4,7 @@ import { SportsEsports } from "@material-ui/icons";
 
 const NavBar = ({ classes }) => {
   return (
-    <div>
+    <>
       <Container
         style={{ display: "flex", justifyContent: "space-between" }}
         // className={classes.logoCont}
@@ -37,7 +37,7 @@ const NavBar = ({ classes }) => {
           </a>
         </div>
       </Container>
-    </div>
+    </>
   );
 };
 
