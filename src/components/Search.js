@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Carousel from "./Carousel";
 import SearchResults from "./SearchResults";
 /* Material-UI imports */
@@ -57,7 +57,7 @@ const Search = ({ classes }) => {
         <div>
           {gameData.length !== 0 && <Carousel latestGames={gameData} />}
           <Container className="search-field">
-            {appState == "searchResults" && (
+            {appState === "searchResults" && (
               <RefreshIcon
                 className="search-field--reseticon"
                 onClick={resetAppState}

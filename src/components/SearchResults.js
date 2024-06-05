@@ -125,7 +125,7 @@ const Item = ({ gameData, appState }) => {
   return (
     <div className={classes.card}>
       <header className="results-header">
-        {appState == "gameData" && (
+        {appState === "gameData" && (
           <div id="popular-games">
             <h2 style={{ color: "white" }}>Popular Games</h2>
           </div>
