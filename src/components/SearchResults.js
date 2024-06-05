@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ gameData, term }) => {
+const Item = ({ gameData, appState }) => {
   const classes = useStyles();
 
   const name = gameData.results.map((item) => item.name);
@@ -125,7 +125,7 @@ const Item = ({ gameData, term }) => {
   return (
     <div className={classes.card}>
       <header className="results-header">
-        {term ? null : (
+        {appState == "gameData" && (
           <div id="popular-games">
             <h2 style={{ color: "white" }}>Popular Games</h2>
           </div>

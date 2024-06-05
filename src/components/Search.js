@@ -4,6 +4,7 @@ import SearchResults from "./SearchResults";
 /* Material-UI imports */
 import { TextField, Container, Button } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import RefreshIcon from "@material-ui/icons/Refresh";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import useFetch from "./useFetch";
 
@@ -25,6 +26,11 @@ const Search = ({ classes }) => {
   const getSearchResults = () => {
     setSearchResults(dataSearchResults);
     setAppState("searchResults");
+  };
+
+  const resetAppState = () => {
+    setAppState("gameData");
+    setSearchTerm("");
   };
 
   const darkTheme = createTheme({
@@ -51,10 +57,17 @@ const Search = ({ classes }) => {
         <div>
           {gameData.length !== 0 && <Carousel latestGames={gameData} />}
           <Container className="search-field">
+            {appState == "searchResults" && (
+              <RefreshIcon
+                className="search-field--reseticon"
+                onClick={resetAppState}
+              />
+            )}
             <TextField
               label="Search for a game title"
               placeholder="eg: Call of duty, Fifa, Far cry"
               className={classes.searchMargin}
+              value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             ></TextField>
             <Button
@@ -79,7 +92,7 @@ const Search = ({ classes }) => {
           ) : (
             <>
               {results.length !== 0 && (
-                <SearchResults gameData={results} term={searchTerm} />
+                <SearchResults gameData={results} appState={appState} />
               )}
             </>
           )}

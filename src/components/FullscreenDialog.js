@@ -270,6 +270,7 @@ export default function FullScreenDialog({
                             target="_blank"
                             rel="noreferrer"
                             alt="Steam"
+                            key={link.id}
                           >
                             <img
                               src={steamIcon}
@@ -371,8 +372,8 @@ export default function FullScreenDialog({
             </AccordionSummary>
             <AccordionDetails>
               <LightGallery speed={500} plugins={[lgThumbnail, lgFullscreen]}>
-                {screen.map((item) => (
-                  <a href={item.image}>
+                {screen.map((item, index) => (
+                  <a href={item.image} key={index}>
                     <img alt="" src={item.image} />
                   </a>
                 ))}
