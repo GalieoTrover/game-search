@@ -5,65 +5,27 @@ import SearchResults from "./SearchResults";
 import { TextField, Container, Button } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { createTheme, ThemeProvider } from "@material-ui/core";
+import useFetch from "./useFetch";
 
 const Search = ({ classes }) => {
-  const [gameData, setGameData] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [latest, setLatest] = useState(null);
   const [appState, setAppState] = useState("gameData");
 
   let currentYear = new Date().getFullYear();
 
-  useEffect(() => {
-    fetch(
-      `https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&dates=${currentYear}-01-01,${currentYear}-12-31&page_size=30`
-    )
-      .then((res) => {
-        if (!res.ok) {
-          throw Error(`${res.status}: Could not fetch the data`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        if (
-          data.results.length === 0 ||
-          (!data.results.metacritic && data.results.ratings_count === 0)
-        ) {
-          throw Error("Game not found");
-        } else {
-          const filtered = data.results.filter(
-            (res) => res.metacritic || res.ratings_count
-          );
+  const { gameData, fetchError, isLoading } = useFetch(
+    `https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&dates=${currentYear}-01-01,${currentYear}-12-31&page_size=30`
+  );
 
-          setGameData(filtered);
-          setIsLoading(false);
-        }
-        setError(null);
-      })
-      .catch((error) => setError(error.message));
-  }, []);
+  const { gameData: dataSearchResults } = useFetch(
+    `https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&search_exact=true&search=${searchTerm}&page_size=15&exclude_additions=true`
+  );
 
-  const getSearchResults = async () => {
-    const fetchSearchResults = await fetch(
-      `https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&search_exact=true&search=${searchTerm}&page_size=15&exclude_additions=true`
-    );
-    const jsonSearchResults = await fetchSearchResults.json();
-    const dataSearchResults = await jsonSearchResults;
-
-    setSearchResults(dataSearchResults.results);
+  const getSearchResults = () => {
+    setSearchResults(dataSearchResults);
     setAppState("searchResults");
   };
-
-  useEffect(() => {
-    fetch(
-      `https://api.rawg.io/api/games?key=208b3bfe90d940ba9127c24125bae44b&dates=${currentYear}-01-01,${currentYear}-12-31&page_size=30`
-    )
-      .then((res) => res.json())
-      .then((data) => setLatest(data));
-  }, []);
 
   const darkTheme = createTheme({
     palette: {
@@ -87,7 +49,7 @@ const Search = ({ classes }) => {
     <div className={classes.root}>
       <ThemeProvider theme={darkTheme}>
         <div>
-          {latest && <Carousel gameData={gameData} latestGames={latest} />}
+          {gameData.length !== 0 && <Carousel latestGames={gameData} />}
           <Container className="search-field">
             <TextField
               label="Search for a game title"
@@ -102,9 +64,9 @@ const Search = ({ classes }) => {
             >
               Search
             </Button>
-            {error && (
+            {fetchError && (
               <p style={{ textAlign: "center", fontSize: 30, color: "white" }}>
-                {error}
+                {fetchError}
               </p>
             )}
           </Container>
@@ -116,7 +78,7 @@ const Search = ({ classes }) => {
             </div>
           ) : (
             <>
-              {gameData && (
+              {results.length !== 0 && (
                 <SearchResults gameData={results} term={searchTerm} />
               )}
             </>
