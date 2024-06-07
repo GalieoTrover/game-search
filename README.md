@@ -1,6 +1,8 @@
 # GameSearch
 This web application lets you look up details about your favourite video games.
 
+![GameSearch Home](https://raw.githubusercontent.com/GalieoTrover/game-search/app/screens/GameSearch.png "GameSearch Home")
+
 This repository contains 2 branches:
 - `app` : source code for the app
 - `gh-pages` : built version of the react app (running on https://games-search.netlify.app/)
