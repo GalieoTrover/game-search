@@ -170,11 +170,16 @@ li.MuiImageListItem-root {
   border: 5px solid transparent;
   border-radius: 8px;
 }
-
 .MuiContainer-root.search-field.MuiContainer-maxWidthLg {
   display: flex;
   align-items: center;
   gap: 35px;
+}
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.search-btn {
+  background-color: var(--accent);
+}
+.search-field--reseticon {
+  cursor: pointer;
 }
 
 /* Modal window */

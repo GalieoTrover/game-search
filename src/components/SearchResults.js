@@ -4,7 +4,6 @@ import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import { makeStyles } from "@material-ui/core";
 import { useState } from "react";
 import FullScreenDialog from "./FullscreenDialog";
-import { Shuffle } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -54,10 +53,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ gameData, term }) => {
+const Item = ({ gameData, appState }) => {
   const classes = useStyles();
 
-  const name = gameData.map((item) => item.name);
+  const name = gameData.results.map((item) => item.name);
 
   const [related, setRelated] = useState([]);
   const [gameName, setGameName] = useState(name);
@@ -83,22 +82,22 @@ const Item = ({ gameData, term }) => {
 
     // getting release date in dialog
     let value = e.target.alt;
-    const index = gameData.findIndex((item) => item.name === value);
+    const index = gameData.results.findIndex((item) => item.name === value);
 
     // getting screenshots in dialog
-    const images = gameData[index].short_screenshots.slice(1, 7);
+    const images = gameData.results[index].short_screenshots.slice(1, 7);
     setScreen(images);
 
     // getting genres in dialog
     const eachGenres = [];
 
-    for (let i = 0; i < gameData[index].genres.length; i++) {
-      eachGenres.push(gameData[index].genres[i].name);
+    for (let i = 0; i < gameData.results[index].genres.length; i++) {
+      eachGenres.push(gameData.results[index].genres[i].name);
     }
     setGenre(eachGenres);
 
     // getting related games
-    let gameSlug = gameData[index].slug;
+    let gameSlug = gameData.results[index].slug;
 
     fetch(
       `https://api.rawg.io/api/games/${gameSlug}/game-series?key=208b3bfe90d940ba9127c24125bae44b`
@@ -117,7 +116,7 @@ const Item = ({ gameData, term }) => {
       .then((data) => setGameLinks(data));
 
     fetch(
-      `https://api.rawg.io/api/games/${gameData[index].id}?key=208b3bfe90d940ba9127c24125bae44b`
+      `https://api.rawg.io/api/games/${gameData.results[index].id}?key=208b3bfe90d940ba9127c24125bae44b`
     )
       .then((res) => res.json())
       .then((data) => setGameInfo(data));
@@ -126,14 +125,14 @@ const Item = ({ gameData, term }) => {
   return (
     <div className={classes.card}>
       <header className="results-header">
-        {term ? null : (
+        {appState === "gameData" && (
           <div id="popular-games">
             <h2 style={{ color: "white" }}>Popular Games</h2>
           </div>
         )}
       </header>
       <ImageList className={classes.gameList} cols={3.2}>
-        {gameData.map((item) => (
+        {gameData.results.map((item) => (
           <ImageListItem key={item.slug} className={classes.image}>
             <img
               src={item.background_image}
@@ -157,7 +156,7 @@ const Item = ({ gameData, term }) => {
 
       {gameInfo && (
         <FullScreenDialog
-          gameData={gameData}
+          gameData={gameData.results}
           gameName={gameName}
           gameInfo={gameInfo}
           screen={screen}
